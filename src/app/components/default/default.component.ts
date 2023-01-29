@@ -17,7 +17,8 @@ import { Products } from "src/app/models/products";
   providers: [UserService, ProductsService]
 })
 
-export class DefaultComponent implements OnInit{
+export class DefaultComponent implements OnInit
+{
 
   public title: string;
   public token: any;
