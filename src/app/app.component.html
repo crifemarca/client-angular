@@ -1,13 +1,5 @@
 <header id="header">
 
-
-
-
-
-
-
-
-
   <div class="navbar navbar-default" style="background: #004ba7">
 
     <div class="navbar-header">
@@ -39,20 +31,9 @@
       <ul class="nav navbar-nav pull-right" *ngIf="identity.name">
         <li>
           <a href="#" data-toggle="dropdown">{{ identity.name + ' ' + identity.surname }}</a>
-
-
-            <!-- <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-              {{ identity.name + ' ' + identity.surname }}
-            </button> -->
             <div class="dropdown-menu">
-             <li> <a class="dropdown-item" [routerLink]="['/usuario-producto', identity.sub]">Ver productos por usuario</a></li>
+             <li> <a class="dropdown-item" [routerLink]="['/usuario-producto', identity.sub]">Ver productos de usuario logueado</a></li>
             </div>
-
-
-
-
-
-
 
         </li>
         <li>

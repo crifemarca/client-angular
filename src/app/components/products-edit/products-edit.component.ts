@@ -13,7 +13,6 @@
 
 @Component({
   selector: 'app-products-edit',
-  //templateUrl: './products-edit.component.html',
   templateUrl: '../products-new/products-new.component.html',
   styleUrls: ['./products-edit.component.scss'],
   providers: [UserService, ProductsService]
@@ -47,7 +46,6 @@ export class ProductsEditComponent {
    })
   }
 
-
   getProduct(id:any){
 
       this._productsService.getProduct(this.token, id).subscribe(
@@ -57,8 +55,6 @@ export class ProductsEditComponent {
           if(response.status == 'success'){
             this.products = response.products;
             this.page_title = "Editar producto " + this.products.title;
-          }else{
-           // this._router.navigate(['inicio']);
           }
 
         },
@@ -86,18 +82,11 @@ export class ProductsEditComponent {
 
   onSubmit(form: any){
 
-    console.log("desde el EDITARRRR ", this.products);
-
     this._productsService.update(this.token, this.products, this.products.id).subscribe(
 
      response =>{
 
-      console.log(response);
-
        if(response.status == 'success'){
-
-        // this.products = response.product;
-         //this.status_products = response.status;
 
          this._router.navigate(['inicio']);
 
@@ -108,18 +97,11 @@ export class ProductsEditComponent {
      },
      error => {
        console.log(<any>error);
-
        this.status_products = 'error';
-
      }
 
     )
 
-
-
-
    }
-
-
 
 }

@@ -6,7 +6,6 @@
  */
 import { Component, OnInit } from "@angular/core";
 import { Router, ActivatedRoute, Params } from "@angular/router";
-//import { User } from "src/app/models/user";
 import { UserService } from "src/app/services/user.service";
 import { ProductsService } from "src/app/services/products.services";
 import { Products } from "src/app/models/products";
@@ -45,14 +44,8 @@ export class DefaultComponent implements OnInit
 
       response =>{
 
-        // console.log(response);
-        // console.log(response.products[0].user.name);
         if(response.status == 'success'){
           this.products = response.products;
-
-
-          console.log(this.products);
-
 
           this._router.navigate(['inicio']);
         }

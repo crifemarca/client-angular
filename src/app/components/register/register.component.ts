@@ -10,11 +10,9 @@ import { User } from "src/app/models/user";
 import { UserService } from "src/app/services/user.service";
 
 @Component({
-
   selector: 'register',
   templateUrl: 'register.component.html',
   providers: [UserService]
-
 })
 
 export class RegisterComponent implements OnInit{
@@ -33,7 +31,7 @@ export class RegisterComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    console.log("Register cargadoooo cabronnnn");
+    console.log("Register cargadoooo");
   }
 
   onSubmit(){
@@ -43,22 +41,13 @@ export class RegisterComponent implements OnInit{
       response => {
         this.status = response.status;
         if(response.status == 'success'){
-
           //vaciar el formulario - objeto
           this.user = new User(1, 'ROLE_USER', '', '', '', '');
-
         }
       },
       error => {
-
-
-        console.log("erorrrrrrrrrrrr",error);
-
-
-
         console.log(<any>error);
         this.status = 'error';
-
       }
     )
 
