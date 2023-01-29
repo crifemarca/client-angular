@@ -1,0 +1,72 @@
+<header id="header">
+
+
+
+
+
+
+
+
+
+  <div class="navbar navbar-default" style="background: #004ba7">
+
+    <div class="navbar-header">
+      <a class="navbar-brand">
+        Mejora & soluciones
+      </a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="menu">
+
+      <ul class="nav navbar-nav">
+        <li style="color: #ffffff !important">
+          <a [routerLink]="['/']">Lista de productos</a>
+        </li>
+        <li *ngIf="identity.name">
+          <a [routerLink]="['crear-product']">Crear producto</a>
+        </li>
+      </ul>
+
+      <ul class="nav navbar-nav pull-right" *ngIf="!identity.name">
+        <li>
+          <a [routerLink]="['login']">Iniciar sesión</a>
+        </li>
+        <li *ngIf="identity">
+          <a [routerLink]="['registro']">Registro</a>
+        </li>
+      </ul>
+
+      <ul class="nav navbar-nav pull-right" *ngIf="identity.name">
+        <li>
+          <a href="#" data-toggle="dropdown">{{ identity.name + ' ' + identity.surname }}</a>
+
+
+            <!-- <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+              {{ identity.name + ' ' + identity.surname }}
+            </button> -->
+            <div class="dropdown-menu">
+             <li> <a class="dropdown-item" [routerLink]="['/usuario-producto', identity.sub]">Ver productos por usuario</a></li>
+            </div>
+
+
+
+
+
+
+
+        </li>
+        <li>
+          <a [routerLink]="['logout', 1]">
+            <span class="glyphicon glyphicon-log-out"></span>
+            Cerrar sesion
+          </a>
+        </li>
+      </ul>
+
+    </div>
+
+   </div>
+
+</header>
+
+<router-outlet></router-outlet>

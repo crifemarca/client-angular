@@ -1,0 +1,31 @@
+  <div class="col-md-6">
+
+  <h1>{{title}}</h1>
+
+  <div class="alert alert-success" *ngIf="status == 'success'">
+    Te has identificado correctamente
+  </div>
+
+  <div class="alert alert-danger" *ngIf="status == 'error'">
+    El usuario no existe
+  </div>
+
+  <form action="" #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)" class="col-md-5">
+
+    <p>
+      <label for="email">Email</label>
+      <input type="email" class="form-control" name="email" #email="ngModel" [(ngModel)]="user.email" required>
+      <span *ngIf="!email.valid && email.touched">El email es obligatorio</span>
+    </p>
+
+    <p>
+      <label for="password">Password</label>
+      <input type="password" class="form-control" name="password" #password="ngModel" [(ngModel)]="user.password" required>
+      <span *ngIf="!password.valid && password.touched">La contraseña es obligatorio</span>
+    </p>
+
+    <input type="submit" value="Entrar" class="btn btn-primary" [disabled]="!loginForm.valid">
+
+  </form>
+
+</div>
