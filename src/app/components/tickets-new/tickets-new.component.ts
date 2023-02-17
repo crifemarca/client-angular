@@ -7,23 +7,23 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from "@angular/router";
 import { UserService } from "src/app/services/user.service";
-import { ProductsService } from "src/app/services/products.services";
-import { Products } from "src/app/models/products";
+import { TicketsService } from "src/app/services/tickets.services";
+import { Tickets } from "src/app/models/tickets";
 import { User } from "src/app/models/user";
 
 @Component({
-  selector: 'app-products-new',
-  templateUrl: './products-new.component.html',
-  styleUrls: ['./products-new.component.scss'],
-  providers: [UserService, ProductsService]
+  selector: 'app-tickets-new',
+  templateUrl: './tickets-new.component.html',
+  styleUrls: ['./tickets-new.component.scss'],
+  providers: [UserService, TicketsService]
 })
-export class ProductsNewComponent {
+export class TicketsNewComponent {
 
   public page_title:string;
   public token: any;
   public identity: any;
-  public products: Products;
-  public status_products:any;
+  public tickets: Tickets;
+  public status_tickets:any;
   public usuarios:any;
   public user: Array<User>;
 
@@ -31,12 +31,12 @@ export class ProductsNewComponent {
     private _route: ActivatedRoute,
     private _router: Router,
     private _userService: UserService,
-    private _productsService: ProductsService
+    private _ticketsService: TicketsService
     ){
-    this.page_title = 'Crear nuevo producto';
+    this.page_title = 'Crear nuevo ticket';
 
-    //crear objeto producto
-    this.products = new Products(1, '','', 1, '', null, null,'','');
+    //crear objeto ticket
+    this.tickets = new Tickets(1, '','', '', null, null,'','');
 
     this.identity = this._userService.getIdentity();
     this.token = this._userService.getToken();
@@ -58,24 +58,24 @@ export class ProductsNewComponent {
 
   onSubmit(form: any){
 
-    this._productsService.create(this.token, this.products).subscribe(
+    this._ticketsService.create(this.token, this.tickets).subscribe(
 
      response =>{
 
        if(response.status == 'success'){
 
-         this.products = response.product;
-         this.status_products = response.status;
+         this.tickets = response.tickets;
+         this.status_tickets = response.status;
 
          this._router.navigate(['inicio']);
 
        }else{
-         this.status_products = 'error';
+         this.status_tickets = 'error';
        }
 
      },
      error => {
-       this.status_products = 'error';
+       this.status_tickets = 'error';
      }
 
     )
@@ -94,7 +94,7 @@ export class ProductsNewComponent {
 
       },
       error => {
-        this.status_products = 'error';
+        this.status_tickets = 'error';
       }
 
      )

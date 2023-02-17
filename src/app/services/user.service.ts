@@ -154,4 +154,45 @@ export class UserService {
 
     }
 
+
+   /**
+   * Consume el API, retorna los productos de un usuario
+   *
+   * @param any token
+   * @param any id
+   * Observable
+   * @autor Christian Felipe Martinez Castaño
+   *
+   */
+
+    getUserEmail(token:any, email:any):Observable<any>
+    {
+
+      let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
+                                    .set('Authorization', token);
+
+      return this._http.get(this.url + 'userAllemail/' + email,  {headers: headers});
+
+    }
+
+ /**
+   * Consume el API, trae el detalle de un usuario
+   *
+   * @param any token
+   * @param any id
+   * Observable
+   * @autor Christian Felipe Martinez Castaño
+   *
+   */
+
+  getTicket(token:any, id:any):Observable<any>
+  {
+
+    let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
+                                   .set('Authorization', token);
+
+    return this._http.get(this.url + 'userDetail/' + id,  {headers: headers});
+
+  }
+
 }

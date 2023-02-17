@@ -7,22 +7,22 @@
  import { Component, OnInit } from "@angular/core";
  import { Router, ActivatedRoute, Params } from "@angular/router";
  import { UserService } from "src/app/services/user.service";
- import { ProductsService } from "src/app/services/products.services";
- import { Products } from "src/app/models/products";
+ import { TicketsService } from "src/app/services/tickets.services";
+ import { Tickets } from "src/app/models/tickets";
  import { User } from "src/app/models/user";
 
 @Component({
-  selector: 'app-products-edit',
-  templateUrl: '../products-new/products-new.component.html',
-  styleUrls: ['./products-edit.component.scss'],
-  providers: [UserService, ProductsService]
+  selector: 'app-tickets-edit',
+  templateUrl: '../tickets-new/tickets-new.component.html',
+  styleUrls: ['./tickets-edit.component.scss'],
+  providers: [UserService, TicketsService]
 })
-export class ProductsEditComponent {
+export class TicketsEditComponent {
 
   public page_title: string;
   public token: any;
-  public products: Products;
-  public status_products:any;
+  public tickets: Tickets;
+  public status_tickets:any;
   public user: Array<User>;
   public selecUser:any;
 
@@ -30,11 +30,11 @@ export class ProductsEditComponent {
     private _route: ActivatedRoute,
     private _router: Router,
     private _userService: UserService,
-    private _productsService: ProductsService
+    private _ticketsService: TicketsService
   ){
-    this.page_title = 'Editar producto';
+    this.page_title = 'Editar ticket';
     this.token = this._userService.getToken();
-    this.products = new Products(1, '','', 1, '', null, null,null,null);
+    this.tickets = new Tickets(1, '','', '', null, null,null,null);
     this.user = [];
   }
 
@@ -42,19 +42,19 @@ export class ProductsEditComponent {
   ngOnInit(): void {
     this._route.params.subscribe(params => {
       let id = + params['id'];
-      this.getProduct(id);
+      this.getTicket(id);
    })
   }
 
-  getProduct(id:any){
+  getTicket(id:any){
 
-      this._productsService.getProduct(this.token, id).subscribe(
+      this._ticketsService.getTicket(this.token, id).subscribe(
 
         response =>{
 
           if(response.status == 'success'){
-            this.products = response.products;
-            this.page_title = "Editar producto " + this.products.title;
+            this.tickets = response.tickets;
+            this.page_title = "Editar ticket " + this.tickets.title;
           }
 
         },
@@ -74,7 +74,7 @@ export class ProductsEditComponent {
         },
         error => {
           console.log(<any>error);
-          this.status_products = 'error';
+          this.status_tickets = 'error';
         }
        )
 
@@ -82,7 +82,7 @@ export class ProductsEditComponent {
 
   onSubmit(form: any){
 
-    this._productsService.update(this.token, this.products, this.products.id).subscribe(
+    this._ticketsService.update(this.token, this.tickets, this.tickets.id).subscribe(
 
      response =>{
 
@@ -91,13 +91,13 @@ export class ProductsEditComponent {
          this._router.navigate(['inicio']);
 
        }else{
-         this.status_products = 'error';
+         this.status_tickets = 'error';
        }
 
      },
      error => {
        console.log(<any>error);
-       this.status_products = 'error';
+       this.status_tickets = 'error';
      }
 
     )

@@ -1,36 +1,35 @@
-<div class="loading" *ngIf="!products">
+<div class="loading" *ngIf="!tickets">
   Cargando...
 </div>
 
-<div class="col-md-12" *ngIf="products">
+<div class="col-md-12" *ngIf="tickets">
   <h2>{{title}}</h2>
 <br />
 
 <table class="table table-hover table-stripped">
   <thead>
     <tr>
-      <th class="col-md-5">Producto</th>
-      <th>Precio</th>
+      <th class="col-md-5">Ticket</th>
       <th>Disponible</th>
       <th>Usuario asignado</th>
       <th>Acciones</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let prod of products">
+    <tr *ngFor="let tick of tickets">
 
       <th scope="row">
-      <a [routerLink]="['/product', prod.id]" >  {{prod.title}} </a>
+      <a [routerLink]="['/ticket', tick.id]" >  {{tick.title}} </a>
       </th>
-      <td> {{prod.price}}</td>
+
       <td>
-        <span *ngIf="prod.status == 'true'">Si</span>
-        <span *ngIf="prod.status != 'true'">No</span>
+        <span *ngIf="tick.status == 'true'">Si</span>
+        <span *ngIf="tick.status != 'true'">No</span>
       </td>
-      <td>  <a [routerLink]="['/usuario-producto', prod.user.id]" >{{prod.user.name}}</a> </td>
+      <td>  {{tick.user.name}} </td>
       <td>
-        <a [routerLink]="['/editar-product', prod.id]" class="btn btn-warning">Editar</a>&nbsp;
-        <a (click)="deleteProduct(prod.id)" class="btn btn-danger">Borrar</a>
+        <a [routerLink]="['/editar-tickets', tick.id]" class="btn btn-warning">Editar</a>&nbsp;
+        <a (click)="deleteTicket(tick.id)" class="btn btn-danger">Borrar</a>
       </td>
     </tr>
   </tbody>

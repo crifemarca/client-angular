@@ -4,7 +4,7 @@
 
     <div class="navbar-header">
       <a class="navbar-brand">
-        Mejora & soluciones
+        Double V Partners
       </a>
     </div>
 
@@ -12,10 +12,10 @@
 
       <ul class="nav navbar-nav">
         <li style="color: #ffffff !important">
-          <a [routerLink]="['/']">Lista de productos</a>
+          <a [routerLink]="['/']">Lista de tickets</a>
         </li>
         <li *ngIf="identity.name">
-          <a [routerLink]="['crear-product']">Crear producto</a>
+          <a [routerLink]="['crear-ticket']">Crear ticket</a>
         </li>
       </ul>
 
@@ -32,7 +32,7 @@
         <li>
           <a href="#" data-toggle="dropdown">{{ identity.name + ' ' + identity.surname }}</a>
             <div class="dropdown-menu">
-             <li> <a class="dropdown-item" [routerLink]="['/usuario-producto', identity.sub]">Ver productos de usuario logueado</a></li>
+             <li> <a class="dropdown-item" [routerLink]="['/usuario-tickets']">Buscar usuario</a></li>
             </div>
 
         </li>

@@ -1,0 +1,13 @@
+<div class="col-md-12" *ngIf="tickets">
+
+  <h1>{{tickets.title}}</h1>
+
+  <p>
+    <strong *ngIf="tickets.status == 'true' ">Este ticket se encuentra disponible</strong>
+    <strong *ngIf="tickets.status == 'false' ">Este ticket no se encuentra disponible</strong>
+  </p>
+  <p>
+    {{tickets.description}}
+  </p>
+
+</div>

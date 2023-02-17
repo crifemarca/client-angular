@@ -6,21 +6,19 @@
  */
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
-import { FormsModule } from '@angular/forms';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
+import { NgChartsModule } from 'ng2-charts';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { DefaultComponent } from './components/default/default.component';
-import { ProductsNewComponent } from './components/products-new/products-new.component';
-import { ProductsEditComponent } from './components/products-edit/products-edit.component';
-import { ProductsDetailComponent } from './components/products-detail/products-detail.component';
-import { UsuarioProductosComponent } from './components/usuario-productos/usuario-productos.component';
+import { TicketsNewComponent } from './components/tickets-new/tickets-new.component';
+import { TicketsEditComponent } from './components/tickets-edit/tickets-edit.component';
+import { TicketsDetailComponent } from './components/tickets-detail/tickets-detail.component';
+import { UsuarioTicketsComponent } from './components/usuario-tickets/usuario-tickets.component';
+import { UserDetailComponent } from './components/user-detail/user-detail.component';
 
 @NgModule({
   declarations: [
@@ -28,15 +26,18 @@ import { UsuarioProductosComponent } from './components/usuario-productos/usuari
     LoginComponent,
     RegisterComponent,
     DefaultComponent,
-    ProductsNewComponent,
-    ProductsEditComponent,
-    ProductsDetailComponent,
-    UsuarioProductosComponent
+    TicketsNewComponent,
+    TicketsEditComponent,
+    TicketsDetailComponent,
+    UsuarioTicketsComponent,
+    UserDetailComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
+    ReactiveFormsModule,
+    NgChartsModule,
     AppRoutingModule
   ],
   providers: [],

@@ -38,7 +38,6 @@ export class LoginComponent implements OnInit{
     this.logout();
   }
 
-
   onSubmit(form: any){
 
     //retorna la data del usuario en token
@@ -62,7 +61,6 @@ export class LoginComponent implements OnInit{
               this.identity = response.token;
 
               localStorage.setItem('identity', JSON.stringify(this.identity));
-
               this._router.navigate(['inicio']);
 
             },

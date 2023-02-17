@@ -41,7 +41,6 @@ export class RegisterComponent implements OnInit{
       response => {
         this.status = response.status;
         if(response.status == 'success'){
-          //vaciar el formulario - objeto
           this.user = new User(1, 'ROLE_USER', '', '', '', '');
         }
       },

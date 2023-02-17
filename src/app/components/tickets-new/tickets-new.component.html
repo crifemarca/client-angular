@@ -1,0 +1,51 @@
+
+<div class="col-md-10">
+
+  <h2>{{page_title}}</h2>
+
+  <div class="alert alert-success" *ngIf="status_tickets == 'success'">
+    El Ticket se ha guardado correctamente.
+  </div>
+  <div class="alert alert-danger" *ngIf="status_tickets == 'error'">
+    El Ticket no se ha guardado correctamente, intentalo de nuevo.
+  </div>
+
+  <form action="" #ticketsNew="ngForm" (ngSubmit)="onSubmit(ticketsNew)" class="col-md-5">
+
+    <p>
+      <label for="title">Titulo</label>
+      <input type="text" class="form-control" name="title" #title="ngModel" [(ngModel)]="tickets.title" required>
+      <span *ngIf="!title.valid && title.touched">El titulo es obligatorio</span>
+    </p>
+
+    <p>
+      <label for="description">Descripcion</label>
+      <input type="text" class="form-control" name="description" #description="ngModel" [(ngModel)]="tickets.description" required>
+      <span *ngIf="!description.valid && description.touched">La descripcion es obligatoria</span>
+    </p>
+
+    <p>
+      <label for="status">Disponible?</label>
+     <select class="form-control" name="status" #status="ngModel" [(ngModel)]="tickets.status" required="">
+
+      <option value="true">Si</option>
+      <option value="false">No</option>
+
+     </select>
+      <span *ngIf="!status.valid && status.touched">El estado del ticket es obligatorio</span>
+    </p>
+
+    <p>
+      <label for="user">Usuario</label>
+      <select class="form-control" name="user" #user_id="ngModel" [(ngModel)]="tickets.user_id">
+      <option *ngFor="let item of user" [value]="item.id" >
+        {{item.name}}
+      </option>
+     </select>
+     </p>
+
+    <input type="submit" value="Registrar ticket" class="btn btn-success" [disabled]="!ticketsNew.valid">
+
+  </form>
+
+</div>

@@ -7,13 +7,13 @@
 import { Component, OnInit } from "@angular/core";
 import { Router, ActivatedRoute, Params } from "@angular/router";
 import { UserService } from "src/app/services/user.service";
-import { ProductsService } from "src/app/services/products.services";
-import { Products } from "src/app/models/products";
+import { TicketsService } from "src/app/services/tickets.services";
+import { Tickets } from "src/app/models/tickets";
 
 @Component({
   selector: 'default',
   templateUrl: 'default.component.html',
-  providers: [UserService, ProductsService]
+  providers: [UserService, TicketsService]
 })
 
 export class DefaultComponent implements OnInit
@@ -21,31 +21,31 @@ export class DefaultComponent implements OnInit
 
   public title: string;
   public token: any;
-  public products: Array<Products>;
+  public tickets: Array<Tickets>;
 
   constructor(
     private _route: ActivatedRoute,
     private _router: Router,
     private _userService: UserService,
-    private _productsService: ProductsService
+    private _ticketsService: TicketsService
   ){
-    this.title = 'Lista de productos';
+    this.title = 'Lista de tickets';
     this.token = this._userService.getToken();
-    this.products = [];
+    this.tickets = [];
   }
 
   ngOnInit(): void {
-    this.getProducto();
+    this.getTickets();
   }
 
-  getProducto(){
+  getTickets(){
 
-    this._productsService.getProducts(this.token).subscribe(
+    this._ticketsService.getTickets(this.token).subscribe(
 
       response =>{
 
         if(response.status == 'success'){
-          this.products = response.products;
+          this.tickets = response.tickets;
 
           this._router.navigate(['inicio']);
         }
@@ -57,14 +57,14 @@ export class DefaultComponent implements OnInit
 
   }
 
-  deleteProduct(id:any){
+  deleteTicket(id:any){
 
-    this._productsService.delete(this.token, id).subscribe(
+    this._ticketsService.delete(this.token, id).subscribe(
 
       response =>{
 
         if(response.status == 'success'){
-          this.getProducto();
+          this.getTickets();
         }
 
       },

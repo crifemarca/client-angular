@@ -1,0 +1,62 @@
+
+<div class="alert alert-danger" *ngIf="status_user == 'error'">
+  No existen usuarios con los valores ingresados
+</div>
+<div class="col-md-12" *ngIf="user">
+
+  <h2>{{title}}</h2>
+
+  <br />
+
+  <form action="" #userGet="ngForm" (ngSubmit)="onSubmit(userGet)" class="col-md-5">
+
+    <p>
+      <label for="email">Buscar por email</label>
+      <input type="text" class="form-control" name="email" #email="ngModel" minlength="4" [(ngModel)]="user.email" required>
+      <span class="messageValidator" *ngIf="!email.valid && email.touched">Por facvor seleccionar minimo 4 caracteres</span>
+      <span class="messageValidator" *ngIf="user.email == 'doublevpartners'">No se puede escribir la palabra doublevpartners</span>
+    </p>
+
+    <input type="submit" value="Buscar usuario" class="btn btn-success" [disabled]="!userGet.valid || user.email == 'doublevpartners' ">
+
+  </form>
+
+  <div class="row">
+    <div class="col-md-6" style="width: 200px;">
+      <div style="display: block;">
+
+        <canvas baseChart width="400" height="400"
+        [datasets]="lineChartData"
+        [labels]="lineChartLabels"
+        [options]="lineChartOptions"
+        [legend]="lineChartLegend"></canvas>
+
+      </div>
+    </div>
+  </div>
+
+  <br />
+  <br />
+
+   <table class="table table-hover table-stripped">
+    <thead>
+      <tr>
+        <th class="col-md-5">Usuario</th>
+        <th>email</th>
+        <th>Nombre</th>
+      </tr>
+    </thead>
+    <tbody *ngIf="status_user != ''">
+      <tr *ngFor="let usuario of usuarioData">
+        <th scope="row">
+          <a [routerLink]="['/user-detail/', usuario.id]" > {{usuario.id}}</a>
+        </th>
+        <td>  {{usuario.email}}</td>
+        <td>
+          {{usuario.name}}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>

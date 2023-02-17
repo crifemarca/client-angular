@@ -11,11 +11,12 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { DefaultComponent } from './components/default/default.component';
 
-import { ProductsNewComponent } from './components/products-new/products-new.component';
-import { ProductsEditComponent } from './components/products-edit/products-edit.component';
-import { ProductsDetailComponent } from './components/products-detail/products-detail.component';
-import { UsuarioProductosComponent } from './components/usuario-productos/usuario-productos.component';
+import { TicketsNewComponent } from './components/tickets-new/tickets-new.component';
+import { TicketsEditComponent } from './components/tickets-edit/tickets-edit.component';
+import { TicketsDetailComponent } from './components/tickets-detail/tickets-detail.component';
+import { UsuarioTicketsComponent } from './components/usuario-tickets/usuario-tickets.component';
 
+import { UserDetailComponent } from './components/user-detail/user-detail.component';
 
 const routes: Routes = [
 
@@ -31,10 +32,11 @@ const routes: Routes = [
   {path:'login', component:LoginComponent},
   {path:'registro', component:RegisterComponent},
   {path:'logout/:sure', component:LoginComponent},
-  {path:'crear-product', component:ProductsNewComponent},
-  {path:'editar-product/:id', component:ProductsEditComponent},
-  {path:'product/:id', component:ProductsDetailComponent},
-  {path:'usuario-producto/:id', component:UsuarioProductosComponent},
+  {path:'crear-ticket', component:TicketsNewComponent},
+  {path:'editar-tickets/:id', component:TicketsEditComponent},
+  {path:'ticket/:id', component:TicketsDetailComponent},
+  {path:'usuario-tickets', component:UsuarioTicketsComponent},
+  {path:'user-detail/:id', component:UserDetailComponent},
   {path:'**', component:DefaultComponent}
 ];
 
